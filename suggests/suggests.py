@@ -65,7 +65,7 @@ def scraper(qry, source='bing', sesh=None, sleep=None, allow_zip=False):
     try:
         response = sesh.get(url, timeout=10)
         if source == 'google':
-            return json.loads(response.content)
+            return json.loads(response.content.decode('latin-1'))
         elif source == 'bing':
             return response.content.decode('utf-8')
     except Exception as e:
